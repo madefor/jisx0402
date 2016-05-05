@@ -6,11 +6,11 @@ JSON API for JIS X 0402, Identification code for cities, towns and villages (市
 
 This APIs is just static JSON files, so you can get them with URL below:
 
-* All city data: http://takahashim.github.io/jisx0402/api/v1/all.json
-* A city data (city code with check digit: NNMMMM): http://takahashim.github.io/jisx0402/api/v1/NN/MMMM.json
-    * sample: http://takahashim.github.io/jisx0402/api/v1/01/1002.json
-* A city data (city code without check digit: NNMMM): http://takahashim.github.io/jisx0402/api/v1/NN/MMM.json
-    * sample: http://takahashim.github.io/jisx0402/api/v1/01/100.json
+* All city data: http://madefor.github.io/jisx0402/api/v1/all.json
+* A city data (city code with check digit: NNMMMM): http://madefor.github.io/jisx0402/api/v1/NN/MMMM.json
+    * sample: http://madefor.github.io/jisx0402/api/v1/01/1002.json
+* A city data (city code without check digit: NNMMM): http://madefor.github.io/jisx0402/api/v1/NN/MMM.json
+    * sample: http://madefor.github.io/jisx0402/api/v1/01/100.json
 
 ## How to Build JSON files
 
