@@ -6,6 +6,7 @@ require 'spreadsheet'
 require 'nkf'
 
 CODE_FILE_URL = "http://www.soumu.go.jp/main_content/000318342.xls"
+API_DIR = "api/v1/"
 
 def conv_katakana(str)
   NKF::nkf("--katakana -w", str)
@@ -72,12 +73,12 @@ def merge_data(cities, designated_cities)
   city_data
 end
 
-def write_json(city_data)
+def write_json(city_data, api_dir = API_DIR)
   (1..47).each do |pref_code|
-    pref_dir = sprintf("api/v1/%02d", pref_code)
+    pref_dir = File.join(api_dir, sprintf("%02d", pref_code))
     FileUtils.mkdir_p(pref_dir)
   end
-  File.open("api/v1/all.json", "wb") do |f|
+  File.open(File.join(api_dir, "all.json"), "wb") do |f|
     f.write JSON.dump(city_data)
   end
   city_data.each do |code, data|
@@ -86,11 +87,11 @@ def write_json(city_data)
     pref_code = code[0,2].to_i
     data["code"] = code
     data["code5"] = code[0,5]
-    pref_dir = sprintf("api/v1/%02d", pref_code)
-    File.open(File.join(pref_dir, code35+".json"), "wb") do |f|
+    pref_dir = sprintf("%02d", pref_code)
+    File.open(File.join(api_dir, pref_dir, code35+".json"), "wb") do |f|
       f.write JSON.dump(data)
     end
-    File.open(File.join(pref_dir, code36+".json"), "wb") do |f|
+    File.open(File.join(api_dir, pref_dir, code36+".json"), "wb") do |f|
       f.write JSON.dump(data)
     end
   end
