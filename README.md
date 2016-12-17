@@ -1,6 +1,6 @@
 # JIS X 0402 API
 
-[![Build Status](https://travis-ci.org/KamataRyo/jisx0402.svg?branch=master)](https://travis-ci.org/KamataRyo/jisx0402)
+[![Build Status](https://travis-ci.org/madefor/jisx0402.svg?branch=master)](https://travis-ci.org/madefor/jisx0402)
 
 JSON API for JIS X 0402, Identification code for cities, towns and villages (市区町村コード).
 
