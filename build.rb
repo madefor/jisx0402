@@ -5,7 +5,7 @@ require 'fileutils'
 require 'spreadsheet'
 require 'nkf'
 
-CODE_FILE_URL = "http://www.soumu.go.jp/main_content/000318342.xls"
+CODE_FILE_URL = "http://www.soumu.go.jp/main_content/000442937.xls"
 API_DIR = "api/v1/"
 
 def conv_katakana(str)
