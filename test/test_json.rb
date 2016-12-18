@@ -28,12 +28,18 @@ class TestSample < Test::Unit::TestCase
                  File.read(File.join(TMP_API_DIR,"01/100.json")))
     assert_equal(File.read(File.join(API_DIR,"01/1002.json")),
                  File.read(File.join(TMP_API_DIR,"01/1002.json")))
+   ### first summary item
+    assert_equal(File.read(File.join(API_DIR, "01.json")),
+                 File.read(File.join(TMP_API_DIR, "01.json")))
 
     ## last item
     assert_equal(File.read(File.join(API_DIR,"47/382.json")),
                  File.read(File.join(TMP_API_DIR,"47/382.json")))
     assert_equal(File.read(File.join(API_DIR,"47/3821.json")),
                  File.read(File.join(TMP_API_DIR,"47/3821.json")))
+    ### last summary item
+    assert_equal(File.read(File.join(API_DIR, "47.json")),
+                 File.read(File.join(TMP_API_DIR, "47.json")))
   end
 
   def teardown

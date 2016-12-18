@@ -74,9 +74,12 @@ def merge_data(cities, designated_cities)
 end
 
 def write_json(city_data, api_dir = API_DIR)
+  bulk_prepare = {}
   (1..47).each do |pref_code|
     pref_dir = File.join(api_dir, sprintf("%02d", pref_code))
     FileUtils.mkdir_p(pref_dir)
+    # prepare containers for each prefecture
+    bulk_prepare[sprintf("%02d", pref_code)] = {}
   end
   File.open(File.join(api_dir, "all.json"), "wb") do |f|
     f.write JSON.dump(city_data)
@@ -88,13 +91,27 @@ def write_json(city_data, api_dir = API_DIR)
     data["code"] = code
     data["code5"] = code[0,5]
     pref_dir = sprintf("%02d", pref_code)
-    File.open(File.join(api_dir, pref_dir, code35+".json"), "wb") do |f|
+    File.open(File.join(api_dir, pref_dir, code35 + ".json"), "wb") do |f|
       f.write JSON.dump(data)
     end
-    File.open(File.join(api_dir, pref_dir, code36+".json"), "wb") do |f|
+    File.open(File.join(api_dir, pref_dir, code36 + ".json"), "wb") do |f|
       f.write JSON.dump(data)
+    end
+    key = data["code"]
+    key5 = data["code5"]
+    data.delete("code")
+    data.delete("code5")
+    bulk_prepare[pref_dir][key] = data
+    bulk_prepare[pref_dir][key5] = data
+  end
+  # create bulk json
+  (1..47).each do |pref_code|
+    pref_dir = sprintf("%02d", pref_code)
+    File.open(File.join(api_dir, pref_dir + ".json"), "wb") do |f|
+      f.write JSON.dump(bulk_prepare[pref_dir])
     end
   end
+
 end
 
 def main
