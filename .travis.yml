@@ -1,0 +1,6 @@
+language: ruby
+before_script:
+  - "bundle install"
+  - "bundle exec rake"
+script:
+  - "bundle exec rake test"
