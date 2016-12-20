@@ -57,6 +57,8 @@ $ curl http://madefor.github.io/jisx0402/api/v1/all.json
 
 ### List all cities of a prefecture
 
+#### request
+
 ```
 GET /api/v1/:pref.json
 ```
@@ -110,6 +112,8 @@ $ curl http://madefor.github.io/jisx0402/api/v1/01.json
 
 ### Get a city with a check digit
 
+#### request
+
 ```
 GET /api/v1/:pref/:city.json
 ```
@@ -146,6 +150,8 @@ $ curl http://madefor.github.io/jisx0402/api/v1/01/100.json
 |*code5*|The city code without check digits (totally 5 digits)|
 
 ### Get a city without check digits
+
+#### request
 
 ```
 GET /api/v1/:pref_code/:city_code.json
