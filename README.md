@@ -26,7 +26,7 @@ GET /api/v1/all.json
 
 #### Response
 
-Response pairs of city code and information about its name. A city code is consisted with 2 digits of city code, 3 digits of city code and a check digit, in order.
+Response is pairs of city code and information about its name. A city code is consisted with 2 digits of city code, 3 digits of city code and a check digit, in order.
 
 ```
 $ curl http://madefor.github.io/jisx0402/api/v1/all.json
@@ -58,12 +58,16 @@ $ curl http://madefor.github.io/jisx0402/api/v1/all.json
 ### List all cities of a prefecture
 
 ```
-GET /api/v1/:pref_code.json
+GET /api/v1/:pref.json
 ```
+
+|params|description|
+|:--|:--|
+|:pref|Prefecture code ranged from 01 to 47|
 
 #### Response
 
-Response combined result of 2 types of city information, which key has a check digit and that has no check digits. Values are information about name of the cities.
+Response combined result of 2 types of city information, which key has a check digit and the other has no check digits. Values are information about name of the cities.
 
 ```
 $ curl http://madefor.github.io/jisx0402/api/v1/01.json
@@ -104,11 +108,16 @@ $ curl http://madefor.github.io/jisx0402/api/v1/01.json
 |*prefecture_kana*|Kana name of prefecture the city belongs to|
 |*city_kana*|Kana name of the city|
 
-### Get a city with check digit
+### Get a city with a check digit
 
 ```
-GET /api/v1/:pref_code/:city_code.json
+GET /api/v1/:pref/:city.json
 ```
+
+|params|description|
+|:--|:--|
+|:pref|A prefecture code ranged from 01 to 47|
+|:city|A city code with 4 digits. Former 3 ranged from 100 to 799. The last digit is a check digit|
 
 #### response
 
@@ -136,13 +145,16 @@ $ curl http://madefor.github.io/jisx0402/api/v1/01/100.json
 |*code*|The city code with a check digit|
 |*code5*|The city code without check digits (totally 5 digits)|
 
-### Get a city without check digit
-
-Get information of a city by keys without check digit.
+### Get a city without check digits
 
 ```
 GET /api/v1/:pref_code/:city_code.json
 ```
+
+|params|description|
+|:--|:--|
+|:pref|A prefecture code ranged from 01 to 47|
+|:city|A city code with 3 digits ranged from 100 to 799|
 
 #### response
 
