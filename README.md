@@ -16,6 +16,160 @@ This APIs is just static JSON files, so you can get them with URL below:
 * A city data (city code without check digit: NNMMM): https://madefor.github.io/jisx0402/api/v1/NN/MMM.json
     * sample: https://madefor.github.io/jisx0402/api/v1/01/100.json
 
+## API v1 details
+
+### List all cities of all prefectures
+
+```
+GET /api/v1/all.json
+```
+
+#### Response
+
+Response pairs of city code and information about its name. A city code is consisted with 2 digits of city code, 3 digits of city code and a check digit, in order.
+
+```
+$ curl http://madefor.github.io/jisx0402/api/v1/all.json
+
+{
+    "102016": {
+        "prefecture": "群馬県",
+        "city": "前橋市",
+        "prefecture_kana": "グンマケン",
+        "city_kana": "マエバシシ"
+    },
+    "102024": {
+        "prefecture": "群馬県",
+        "city": "高崎市",
+        "prefecture_kana": "グンマケン",
+        "city_kana": "タカサキシ"
+    },
+    ...
+}
+```
+
+|key|value description|
+|:--|:--|
+|*prefecture*| Kanji name of prefecture the city belongs to|
+|*city*|Kanji name of the city|
+|*prefecture_kana*|Kana name of prefecture the city belongs to|
+|*city_kana*|Kana name of the city|
+
+### List all cities of a prefecture
+
+```
+GET /api/v1/:pref_code.json
+```
+
+#### Response
+
+Response combined result of 2 types of city information, which key has a check digit and that has no check digits. Values are information about name of the cities.
+
+```
+$ curl http://madefor.github.io/jisx0402/api/v1/01.json
+
+{
+    "011002": {
+        "prefecture": "北海道",
+        "city": "札幌市",
+        "prefecture_kana": "ホッカイドウ",
+        "city_kana": "サッポロシ"
+    },
+    "01100": {
+        "prefecture": "北海道",
+        "city": "札幌市",
+        "prefecture_kana": "ホッカイドウ",
+        "city_kana": "サッポロシ"
+    },
+    "011011": {
+        "prefecture": "北海道",
+        "city": "札幌市中央区",
+        "prefecture_kana": "ホッカイドウ",
+        "city_kana": "サッポロシチュウオウク"
+    },
+    "01101": {
+        "prefecture": "北海道",
+        "city": "札幌市中央区",
+        "prefecture_kana": "ホッカイドウ",
+        "city_kana": "サッポロシチュウオウク"
+    },
+    ...
+}
+```
+
+|key|value description|
+|:--|:--|
+|*prefecture*| Kanji name of prefecture the city belongs to|
+|*city*|Kanji name of the city|
+|*prefecture_kana*|Kana name of prefecture the city belongs to|
+|*city_kana*|Kana name of the city|
+
+### Get a city with check digit
+
+```
+GET /api/v1/:pref_code/:city_code.json
+```
+
+#### response
+
+Response is information about name of the city.
+
+```
+$ curl http://madefor.github.io/jisx0402/api/v1/01/100.json
+
+{
+    "prefecture": "北海道",
+    "city": "札幌市",
+    "prefecture_kana": "ホッカイドウ",
+    "city_kana": "サッポロシ",
+    "code": "011002",
+    "code5": "01100"
+}
+```
+
+|key|value description|
+|:--|:--|
+|*prefecture*| Kanji name of prefecture the city belongs to|
+|*city*|Kanji name of the city|
+|*prefecture_kana*|Kana name of prefecture the city belongs to|
+|*city_kana*|Kana name of the city|
+|*code*|The city code with a check digit|
+|*code5*|The city code without check digits (totally 5 digits)|
+
+### Get a city without check digit
+
+Get information of a city by keys without check digit.
+
+```
+GET /api/v1/:pref_code/:city_code.json
+```
+
+#### response
+
+Response is information about name of the city.
+
+```
+$ curl http://madefor.github.io/jisx0402/api/v1/01/1002.json
+
+{
+    "prefecture": "北海道",
+    "city": "札幌市",
+    "prefecture_kana": "ホッカイドウ",
+    "city_kana": "サッポロシ",
+    "code": "011002",
+    "code5": "01100"
+}
+```
+
+|key|value description|
+|:--|:--|
+|*prefecture*| Kanji name of prefecture the city belongs to|
+|*city*|Kanji name of the city|
+|*prefecture_kana*|Kana name of prefecture the city belongs to|
+|*city_kana*|Kana name of the city|
+|*code*|The city code with a check digit|
+|*code5*|The city code without check digits (totally 5 digits)|
+
 ## How to Build JSON files
 
 This JSON files are built from an Excel file in Ministry of Internal Affairs and Communications (総務省).
