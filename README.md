@@ -20,9 +20,13 @@ This APIs is just static JSON files, so you can get them with URL below:
 
 ### List all cities of all prefectures
 
+#### Request
+
 ```
 GET /api/v1/all.json
 ```
+
+This endpoint has no parameters.
 
 #### Response
 
@@ -57,7 +61,7 @@ $ curl http://madefor.github.io/jisx0402/api/v1/all.json
 
 ### List all cities of a prefecture
 
-#### request
+#### Request
 
 ```
 GET /api/v1/:pref.json
@@ -112,7 +116,7 @@ $ curl http://madefor.github.io/jisx0402/api/v1/01.json
 
 ### Get a city with a check digit
 
-#### request
+#### Request
 
 ```
 GET /api/v1/:pref/:city.json
@@ -123,7 +127,7 @@ GET /api/v1/:pref/:city.json
 |:pref|A prefecture code ranged from 01 to 47|
 |:city|A city code with 4 digits. Former 3 ranged from 100 to 799. The last digit is a check digit|
 
-#### response
+#### Response
 
 Response is information about name of the city.
 
@@ -151,7 +155,7 @@ $ curl http://madefor.github.io/jisx0402/api/v1/01/100.json
 
 ### Get a city without check digits
 
-#### request
+#### Request
 
 ```
 GET /api/v1/:pref_code/:city_code.json
@@ -162,7 +166,7 @@ GET /api/v1/:pref_code/:city_code.json
 |:pref|A prefecture code ranged from 01 to 47|
 |:city|A city code with 3 digits ranged from 100 to 799|
 
-#### response
+#### Response
 
 Response is information about name of the city.
 
