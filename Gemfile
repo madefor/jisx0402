@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
 
 gem 'rake'
-gem 'spreadsheet'
-
+gem 'roo', '~> 2.8.0'
