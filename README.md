@@ -9,7 +9,7 @@ JSON API for JIS X 0402, Identification code for cities, towns and villages (市
 This APIs is just static JSON files, so you can get them with URL below:
 
 * All city data: https://madefor.github.io/jisx0402/api/v1/all.json
-* All city data in a prefecture (prefecture code with check digit: NN): https://madefor.github.io/jisx0402/api/v1/NN.json
+* All city data in a prefecture (prefecture code: NN): https://madefor.github.io/jisx0402/api/v1/NN.json
     * sample: https://madefor.github.io/jisx0402/api/v1/01.json
 * A city data (city code with check digit: NNMMMM): https://madefor.github.io/jisx0402/api/v1/NN/MMMM.json
     * sample: https://madefor.github.io/jisx0402/api/v1/01/1002.json
